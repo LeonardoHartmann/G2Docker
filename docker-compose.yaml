@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  node-app:
+    image: hartmann
+    container_name: eager_roentgen
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - mysql-db
+
+  mysql-db:
+    image: mysql:latest
+    container_name: sweet_pasteur
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: nubank
+      MYSQL_USER: root
+      MYSQL_PASSWORD: passowrd
+    restart: always
